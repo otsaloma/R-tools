@@ -1,0 +1,16 @@
+#!/bin/sh
+if [ $# -lt 1 ]; then
+    echo "Start R and open RData or RDS file given as argument."
+    echo "Usage: $(basename $0) FILE"
+    exit 1
+fi
+cd "$(dirname "$1")" || exit 1
+DATAFILE="$(basename "$1")"
+EXTENSION="$(echo "${DATAFILE##*.}" | tr A-Z a-z)"
+[ "$EXTENSION" = "rdata" ] && cp -fv "$DATAFILE" .RData
+[ "$EXTENSION" = "rds"   ] && R --quiet --no-save <<EOF
+data = readRDS("$DATAFILE")
+save(data, file=".RData", compress="gzip")
+EOF
+R --quiet --restore --no-save
+rm -f .RData

@@ -1,0 +1,4 @@
+#!/bin/sh
+for ARG; do
+    rscript "$ARG"
+done
