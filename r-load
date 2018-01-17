@@ -10,7 +10,7 @@ EXTENSION="$(echo "${DATAFILE##*.}" | tr A-Z a-z)"
 [ "$EXTENSION" = "rdata" ] && cp -fv "$DATAFILE" .RData
 [ "$EXTENSION" = "rds"   ] && R --quiet --no-save <<EOF
 data = readRDS("$DATAFILE")
-save(data, file=".RData", compress="gzip")
+save(data, file=".RData", compress=FALSE)
 EOF
 R --quiet --restore --no-save
 rm -f .RData
