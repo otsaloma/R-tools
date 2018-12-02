@@ -1,8 +1,8 @@
 [Desktop Entry]
+Type=Application
 Name=R-load
 Comment=Load data file in R
 Exec=r-load %f
 Terminal=true
-StartupNotify=false
-Type=Application
 MimeType=application/x-rdata;application/x-rds;
+StartupNotify=false
