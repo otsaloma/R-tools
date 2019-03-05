@@ -1,4 +1,4 @@
 #!/bin/sh
 for ARG; do
-    rscript "$ARG"
+    rscript "$ARG" || exit 1
 done

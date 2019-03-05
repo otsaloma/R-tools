@@ -3,7 +3,7 @@
 [ $(nice) -lt 1 ] && renice 10 $$ > /dev/null
 START=$(date +%s)
 echo "rscript: $@"
-Rscript --quiet --no-save "$@"
+Rscript --quiet --no-save "$@" || exit 1
 ELAPSED=$(($(date +%s)-$START))
 printf "rscript: %02d:%02d:%02d\n" \
        $(($ELAPSED/3600)) \
