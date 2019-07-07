@@ -1,0 +1,15 @@
+#!/bin/sh
+if [ $# -lt 1 ]; then
+    echo "Install R packages."
+    echo "Usage: $(basename $0) PACKAGE..."
+    echo "  e.g. $(basename $0) data.table dplyr"
+    echo "Usage: $(basename $0) FILE"
+    echo "  e.g. $(basename $0) packages.txt"
+    exit 1
+fi
+if [ -f "$1" ]; then
+    R --quiet -e "install.packages(readLines(\"$1\"))"
+else
+    PACKAGES="$(printf "\"%s\", " "$@" | sed "s/, $//")"
+    R --quiet -e "install.packages(c($PACKAGES))"
+fi

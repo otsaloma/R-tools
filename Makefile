@@ -6,7 +6,13 @@ BINDIR  = $(DESTDIR)$(PREFIX)/bin
 
 install:
 	mkdir -p $(BINDIR)
-	cp multi-rscript r r-load r-parse rscript $(BINDIR)
+	cp install-r-packages $(BINDIR)
+	cp multi-rscript $(BINDIR)
+	cp r $(BINDIR)
+	cp r-load $(BINDIR)
+	cp r-parse $(BINDIR)
+	cp rscript $(BINDIR)
+	chmod +x $(BINDIR)/install-r-packages
 	chmod +x $(BINDIR)/multi-rscript
 	chmod +x $(BINDIR)/r
 	chmod +x $(BINDIR)/r-load
