@@ -1,0 +1,23 @@
+#!/bin/sh
+if [ $# -lt 1 ]; then
+    echo "Start R and open SQLite database given as argument."
+    echo "Usage: $(basename $0) FILE"
+    exit 1
+fi
+cd "$(dirname "$1")" || exit 1
+DATAFILE="$(basename "$1")"
+R --quiet --no-save <<EOF
+suppressPackageStartupMessages(library(DBI))
+suppressPackageStartupMessages(library(RSQLite))
+suppressPackageStartupMessages(library(tibble))
+con = dbConnect(SQLite(), "$DATAFILE")
+tables = dbListTables(con)
+for (table in tables) {
+    message(sprintf("Reading %s...", table))
+    assign(table, as_tibble(dbReadTable(con, table)))
+    save(data, file=".RData", compress=FALSE)
+}
+save(list=tables, file=".RData", compress=FALSE)
+EOF
+R --quiet --restore --no-save
+rm -f .RData
