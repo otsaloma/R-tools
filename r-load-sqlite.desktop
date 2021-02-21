@@ -5,4 +5,5 @@ Comment=Load SQLite database in R
 Exec=r-load-sqlite %f
 Terminal=true
 MimeType=application/vnd.sqlite3;application/x-sqlite3;
+NoDisplay=true
 StartupNotify=false

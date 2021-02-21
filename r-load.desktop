@@ -5,4 +5,5 @@ Comment=Load data file in R
 Exec=r-load %f
 Terminal=true
 MimeType=application/x-rdata;application/x-rds;
+NoDisplay=true
 StartupNotify=false
