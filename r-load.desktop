@@ -2,11 +2,7 @@
 Type=Application
 Name=R-load
 Comment=Load data file in R
-# Requires code to read the data in ~/.Rprofile.
-# https://stackoverflow.com/a/29683963/16369038
-Exec=r --args %f
-# Slower, but works without ~/.Rprofile.
-# Exec=r-load %f
+Exec=r-load %f
 Terminal=true
 MimeType=application/x-rdata;application/x-rds;
 NoDisplay=true
