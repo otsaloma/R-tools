@@ -4,6 +4,6 @@ Name=R-load
 Comment=Load data file in R
 Exec=r-load %f
 Terminal=true
-MimeType=application/x-rdata;application/x-rds;
+MimeType=application/x-rdata;application/x-rds;text/csv;
 NoDisplay=true
 StartupNotify=false
